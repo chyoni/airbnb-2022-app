@@ -11,6 +11,8 @@ black = "*"
 django = "*"
 pillow = "*"
 django-seed = "*"
+requests = "*"
+psycopg2-binary = "*"
 
 [requires]
 python_version = "3.7"
