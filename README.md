@@ -42,3 +42,7 @@ REST & GraphQL API of the Airbnb Clone using Django REST Framework and Graphene 
 - #10 Django restframework
 
   - PUT
+
+- #11 Django restframework
+
+  - User
