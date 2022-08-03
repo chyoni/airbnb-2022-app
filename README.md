@@ -32,3 +32,5 @@ REST & GraphQL API of the Airbnb Clone using Django REST Framework and Graphene 
 - #06 Django restframework pagination
 
 - #07 Django restframework (detail view)
+
+- #08 Django restframework (class based view)

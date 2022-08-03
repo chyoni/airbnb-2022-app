@@ -10,6 +10,8 @@ class RoomAdmin(admin.ModelAdmin):
         "photo_number",
     )
 
+    ordering = ["-created"]
+
 
 @admin.register(models.Photo)
 class PhotoAdmin(admin.ModelAdmin):
