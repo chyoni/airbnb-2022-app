@@ -24,3 +24,5 @@ REST & GraphQL API of the Airbnb Clone using Django REST Framework and Graphene 
 - #04 Serializer many=True
 
 - #05 Serialize nested model
+
+- #06 Django restframework pagination
