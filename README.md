@@ -38,3 +38,7 @@ REST & GraphQL API of the Airbnb Clone using Django REST Framework and Graphene 
 - #09 Django restframework (get, put, delete)
 
   - 보니까 Serializer의 save() 메소드를 호출할 때, Serializer의 인자로 뭘 주냐에 따라 create, update가 실행이되네 문서를 읽으면 더 자세히 알 수 있지만 여튼 그렇다.
+
+- #10 Django restframework
+
+  - PUT
