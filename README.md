@@ -1,5 +1,7 @@
 # Airbnb API
 
+Airbnb Clone Backend
+
 REST & GraphQL API of the Airbnb Clone using Django REST Framework and Graphene GraphQL
 
 ### API Actions
@@ -15,6 +17,8 @@ REST & GraphQL API of the Airbnb Clone using Django REST Framework and Graphene 
 - [ ] See Profile
 - [ ] Edit Profile
 
+### Index
+
 - #01 Init
 
 - #02 Django serializer
@@ -26,3 +30,5 @@ REST & GraphQL API of the Airbnb Clone using Django REST Framework and Graphene 
 - #05 Serialize nested model
 
 - #06 Django restframework pagination
+
+- #07 Django restframework (detail view)
