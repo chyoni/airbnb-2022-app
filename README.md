@@ -50,3 +50,5 @@ REST & GraphQL API of the Airbnb Clone using Django REST Framework and Graphene 
 - #12 ModelSerializer magic
 
   - 그냥 Serializer는 instance를 받냐 안받냐에 따라 create, update이 나눠졌는데, ModelSerializer를 쓰면 그냥 save() call하는 순간 알아서 update는 update해준다.
+
+- #13 User Favs
