@@ -62,3 +62,9 @@ REST & GraphQL API of the Airbnb Clone using Django REST Framework and Graphene 
   ```bash
   pipenv install pyjwt
   ```
+
+- #17 JWT decode
+
+  - django restframework에서 JWT 인증 관련 API가 잘 되어있다.
+  - 참고 문서: https://www.django-rest-framework.org/api-guide/authentication/#authentication
+  - 참고 문서: https://www.django-rest-framework.org/api-guide/authentication/#custom-authentication
