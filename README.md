@@ -70,3 +70,5 @@ REST & GraphQL API of the Airbnb Clone using Django REST Framework and Graphene 
   - 참고 문서: https://www.django-rest-framework.org/api-guide/authentication/#custom-authentication
 
 - #18 Room search 1
+
+- #19 Room search 2
