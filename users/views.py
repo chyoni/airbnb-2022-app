@@ -3,7 +3,7 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.views import APIView
 from rest_framework.decorators import api_view
 from rest_framework import status
-
+from rooms import models as room_models
 from rooms.serializers import RoomSerializer
 from . import models
 from .serializers import ReadUserSerializer, WriteUserSerializer
@@ -48,4 +48,22 @@ class FavsView(APIView):
         return Response(data=serializer.data, status=status.HTTP_200_OK)
 
     def put(self, request):
-        pass
+        pk = request.data.get("pk", None)
+        user = request.user
+        if pk is not None:
+            try:
+                room = room_models.Room.objects.get(pk=pk)
+                if room in user.favs.all():
+                    user.favs.remove(room)
+                else:
+                    user.favs.add(room)
+                return Response(status=status.HTTP_200_OK)
+            except room_models.Room.DoesNotExist:
+                return Response(
+                    data=f"Room does not exist with the pk: {pk}",
+                    status=status.HTTP_404_NOT_FOUND,
+                )
+        else:
+            return Response(
+                data="Room pk required.", status=status.HTTP_400_BAD_REQUEST
+            )
