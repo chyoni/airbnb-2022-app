@@ -6,7 +6,19 @@ from rest_framework import status
 from rooms import models as room_models
 from rooms.serializers import RoomSerializer
 from . import models
-from .serializers import ReadUserSerializer, WriteUserSerializer
+from .serializers import UserSerializer
+
+
+class UsersView(APIView):
+    def post(self, request):
+        serializer = UserSerializer(data=request.data)
+        if serializer.is_valid():
+            new_user = serializer.save()
+            return Response(
+                data=UserSerializer(new_user).data, status=status.HTTP_201_CREATED
+            )
+        else:
+            return Response(data=serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 class MeView(APIView):
@@ -15,27 +27,16 @@ class MeView(APIView):
 
     def get(self, request):
         return Response(
-            data=ReadUserSerializer(request.user).data, status=status.HTTP_200_OK
+            data=UserSerializer(request.user).data, status=status.HTTP_200_OK
         )
 
     def put(self, request):
-        serializer = WriteUserSerializer(request.user, request.data, partial=True)
+        serializer = UserSerializer(request.user, request.data, partial=True)
         if serializer.is_valid():
             user = serializer.save()
-            return Response(
-                data=ReadUserSerializer(user).data, status=status.HTTP_200_OK
-            )
+            return Response(data=UserSerializer(user).data, status=status.HTTP_200_OK)
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-
-@api_view(["GET"])
-def user_detail(request, pk):
-    try:
-        user = models.User.objects.get(pk=pk)
-        return Response(ReadUserSerializer(user).data, status=status.HTTP_200_OK)
-    except models.User.DoesNotExist:
-        return Response(status=status.HTTP_404_NOT_FOUND)
 
 
 class FavsView(APIView):
@@ -67,3 +68,12 @@ class FavsView(APIView):
             return Response(
                 data="Room pk required.", status=status.HTTP_400_BAD_REQUEST
             )
+
+
+@api_view(["GET"])
+def user_detail(request, pk):
+    try:
+        user = models.User.objects.get(pk=pk)
+        return Response(UserSerializer(user).data, status=status.HTTP_200_OK)
+    except models.User.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)

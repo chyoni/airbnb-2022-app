@@ -16,27 +16,29 @@ class RelatedUserSerializer(serializers.ModelSerializer):
         ]
 
 
-class ReadUserSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = models.User
-        exclude = [
-            "groups",
-            "user_permissions",
-            "password",
-            "last_login",
-            "is_superuser",
-            "is_staff",
-            "is_active",
-            "date_joined",
-        ]
-
-
-class WriteUserSerializer(serializers.ModelSerializer):
+class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.User
         fields = [
+            "id",
             "username",
             "first_name",
             "last_name",
             "email",
+            "avatar",
+            "superhost",
+            "password",
         ]
+        read_only_fields = ["id", "superhost", "avatar"]
+        extra_kwargs = {"password": {"write_only": True}}
+
+    def create(self, validated_data):
+        user = models.User.objects.create(
+            email=validated_data["email"],
+            username=validated_data["username"],
+            first_name=validated_data["first_name"],
+            last_name=validated_data["last_name"],
+        )
+        user.set_password(validated_data["password"])
+        user.save()
+        return user

@@ -54,3 +54,5 @@ REST & GraphQL API of the Airbnb Clone using Django REST Framework and Graphene 
 - #13 User favs
 
 - #14 User favs (add, remove)
+
+- #15 Create user
