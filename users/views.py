@@ -74,6 +74,7 @@ class FavsView(APIView):
 
 
 @api_view(["GET"])
+# @permission_classes([IsAuthenticated]) 얘는 decoreators 에서 import해야하는 놈임 function based view를 사용할 때 쓰는 class의 permission_classes랑은 다른거
 def user_detail(request, pk):
     try:
         user = models.User.objects.get(pk=pk)

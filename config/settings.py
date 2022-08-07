@@ -145,6 +145,8 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # Django Rest Framework
 
+
+# DEFAULT_AUTHENTICATION_CLASSES 에서 두 가지 인증 방식을 사용하는데, 하나는 Jwt (Header에 넣어준 값) 이고 하나는 Web에서 Session을 이용한 방식 (만약, admin 패널에서 로그인을 했다면 그 로그인 세션을 가지고 인증하는)
 REST_FRAMEWORK = {
     "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.PageNumberPagination",
     "PAGE_SIZE": 10,
