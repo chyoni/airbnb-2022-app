@@ -72,3 +72,11 @@ REST & GraphQL API of the Airbnb Clone using Django REST Framework and Graphene 
 - #18 Room search 1
 
 - #19 Room search 2
+
+- #20 Room search 3
+
+  - lat, lng search
+
+- #21 SerializerMethodField()
+
+  - 이건 Dynamic field라고도 하는데, 만약 내가 어떤 오브젝트를 관심목록에 등록했다면 등록했는지 안했는지 serializer의 동적 필드를 사용해서 알아내는 방법이다.
