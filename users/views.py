@@ -48,7 +48,9 @@ class FavsView(APIView):
 
     def get(self, request):
         user = request.user
-        serializer = RoomSerializer(user.favs.all(), many=True)
+        serializer = RoomSerializer(
+            user.favs.all(), many=True, context={"request": request}
+        )
         return Response(data=serializer.data, status=status.HTTP_200_OK)
 
     def put(self, request):
@@ -96,7 +98,9 @@ def login(request):
         encoded_jwt = jwt.encode(
             {"pk": user.pk}, settings.SECRET_KEY, algorithm="HS256"
         )
-        return Response(data={"token": encoded_jwt}, status=status.HTTP_200_OK)
+        return Response(
+            data={"token": encoded_jwt, "id": user.pk}, status=status.HTTP_200_OK
+        )
     else:
         return Response(
             data="username or password is wrong", status=status.HTTP_401_UNAUTHORIZED
