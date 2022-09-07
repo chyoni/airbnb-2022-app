@@ -11,8 +11,12 @@ class RelatedUserSerializer(serializers.ModelSerializer):
             "username",
             "first_name",
             "last_name",
+            "bio",
+            "address",
+            "job",
             "avatar",
             "superhost",
+            "date_joined",
         ]
 
 
@@ -26,8 +30,12 @@ class UserSerializer(serializers.ModelSerializer):
             "last_name",
             "email",
             "avatar",
+            "bio",
+            "address",
+            "job",
             "superhost",
             "password",
+            "date_joined",
         ]
         read_only_fields = ["id", "superhost", "avatar"]
         extra_kwargs = {"password": {"write_only": True}}

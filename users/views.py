@@ -30,11 +30,14 @@ class MeView(APIView):
 
     def get(self, request):
         return Response(
-            data=UserSerializer(request.user).data, status=status.HTTP_200_OK
+            data=UserSerializer(request.user, context={"request": request}).data,
+            status=status.HTTP_200_OK,
         )
 
     def put(self, request):
-        serializer = UserSerializer(request.user, request.data, partial=True)
+        serializer = UserSerializer(
+            request.user, request.data, partial=True, context={"request": request}
+        )
         if serializer.is_valid():
             user = serializer.save()
             return Response(data=UserSerializer(user).data, status=status.HTTP_200_OK)
