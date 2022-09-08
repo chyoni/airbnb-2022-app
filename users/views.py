@@ -40,7 +40,10 @@ class MeView(APIView):
         )
         if serializer.is_valid():
             user = serializer.save()
-            return Response(data=UserSerializer(user).data, status=status.HTTP_200_OK)
+            return Response(
+                data=UserSerializer(user, context={"request": request}).data,
+                status=status.HTTP_200_OK,
+            )
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 

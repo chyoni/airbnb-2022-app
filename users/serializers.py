@@ -50,3 +50,8 @@ class UserSerializer(serializers.ModelSerializer):
         user.set_password(validated_data["password"])
         user.save()
         return user
+
+    # def update(self, instance, validated_data):
+    #     instance.bio = validated_data.get("bio", instance.bio)
+    #     instance.save()
+    #     return instance
